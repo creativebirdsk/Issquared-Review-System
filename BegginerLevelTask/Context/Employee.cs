@@ -11,10 +11,7 @@ namespace BegginerLevelTask.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web.Mvc;
-
+    
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,35 +24,19 @@ namespace BegginerLevelTask.Context
         }
     
         public long EmployeeID { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
-        [Column(TypeName = "date")]
         public Nullable<System.DateTime> DOB { get; set; }
         public string Gender { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string DesignationEmp { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
-        [Column(TypeName = "date")]
         public Nullable<System.DateTime> DOJ { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string DepartmentEmp { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string AddressEmp { get; set; }
         public string EmployeeType { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         public string EmailEmp { get; set; }
         public string Status { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
-        [Remote("CheckUsernameAvailability", "Employee", HttpMethod = "POST", ErrorMessage = "User name already exists.")]
         public string UserNameEmp { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string PasswordEmp { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string PhoneNumEmp { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

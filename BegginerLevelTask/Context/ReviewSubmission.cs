@@ -11,15 +11,12 @@ namespace BegginerLevelTask.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ReviewSubmission
     {
         public Nullable<long> ReviewID { get; set; }
         public Nullable<long> EmployeeID { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public Nullable<int> Rating { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string Feedback { get; set; }
         public long ReviewSubmissionID { get; set; }
         public Nullable<bool> SubmissionStatus { get; set; }

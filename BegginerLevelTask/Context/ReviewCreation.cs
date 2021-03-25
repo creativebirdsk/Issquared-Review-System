@@ -11,8 +11,7 @@ namespace BegginerLevelTask.Context
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ReviewCreation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,17 +22,11 @@ namespace BegginerLevelTask.Context
         }
     
         public long ReviewID { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string ReviewAgenda { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public Nullable<System.DateTime> ReviewCycleStartDate { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public Nullable<System.DateTime> ReviewCycleEndDate { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public Nullable<int> MinRate { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public Nullable<int> MaxRate { get; set; }
-        [Required(ErrorMessage = "This field is required.")]
         public string ReviewDescription { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<long> CreatedBy { get; set; }
