@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BegginerLevelTaskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
+          <Property Name="StateID" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="25" />
+          <Property Name="LastName" Type="varchar" MaxLength="25" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="DesignationEmp" Type="varchar" MaxLength="30" />
+          <Property Name="DOJ" Type="date" />
+          <Property Name="DepartmentEmp" Type="varchar" MaxLength="20" />
+          <Property Name="AddressEmp" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeType" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumberEmp" Type="varchar" MaxLength="15" />
+          <Property Name="EmailEmp" Type="varchar" MaxLength="40" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="UserNameEmp" Type="varchar" MaxLength="25" />
+          <Property Name="PasswordEmp" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumEmp" Type="varchar" MaxLength="15" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ReviewAssignment">
+          <Key>
+            <PropertyRef Name="ReviewAssignmentID" />
+          </Key>
+          <Property Name="ReviewID" Type="bigint" />
+          <Property Name="EmployeeID" Type="bigint" />
+          <Property Name="Reviewer" Type="bigint" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ReviewAssignmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssignmentStatus" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ReviewCreation">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReviewAgenda" Type="varchar" MaxLength="100" />
+          <Property Name="ReviewCycleStartDate" Type="date" />
+          <Property Name="ReviewCycleEndDate" Type="date" />
+          <Property Name="MinRate" Type="int" />
+          <Property Name="MaxRate" Type="int" />
+          <Property Name="ReviewDescription" Type="varchar" MaxLength="300" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ReviewStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="ReviewSubmission">
+          <Key>
+            <PropertyRef Name="ReviewSubmissionID" />
+          </Key>
+          <Property Name="ReviewID" Type="bigint" />
+          <Property Name="EmployeeID" Type="bigint" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Feedback" Type="varchar" MaxLength="100" />
+          <Property Name="ReviewSubmissionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubmissionStatus" Type="bit" />
+          <Property Name="EmployeeToBeReviewed" Type="bigint" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="SuperUser">
+          <Key>
+            <PropertyRef Name="SuperID" />
+          </Key>
+          <Property Name="SuperID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SuperFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="SuperLastName" Type="varchar" MaxLength="20" />
+          <Property Name="SuperUserName" Type="varchar" MaxLength="50" />
+          <Property Name="SuperPassword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Organisation">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="30" />
+          <Property Name="State" Type="varchar" MaxLength="30" />
+          <Property Name="City" Type="varchar" MaxLength="30" />
+          <Property Name="MaritalStatus" Type="varchar" MaxLength="15" />
+          <Property Name="Description" Type="varchar" MaxLength="400" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="SuperID" Type="bigint" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Employee__UserID__4AB81AF0">
+          <End Role="tbl_Organisation" Type="Self.tbl_Organisation" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__Emplo__4F7CD00D">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ReviewAssignment" Type="Self.ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__Revie__4E88ABD4">
+          <End Role="ReviewCreation" Type="Self.ReviewCreation" Multiplicity="0..1" />
+          <End Role="ReviewAssignment" Type="Self.ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReviewCreation">
+              <PropertyRef Name="ReviewID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__Revie__5070F446">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ReviewAssignment" Type="Self.ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="Reviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__UserI__5165187F">
+          <End Role="tbl_Organisation" Type="Self.tbl_Organisation" Multiplicity="0..1" />
+          <End Role="ReviewAssignment" Type="Self.ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewCre__UserI__4BAC3F29">
+          <End Role="tbl_Organisation" Type="Self.tbl_Organisation" Multiplicity="0..1" />
+          <End Role="ReviewCreation" Type="Self.ReviewCreation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReviewCreation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewSub__Emplo__5535A963">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ReviewSubmission" Type="Self.ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewSub__Revie__5441852A">
+          <End Role="ReviewCreation" Type="Self.ReviewCreation" Multiplicity="0..1" />
+          <End Role="ReviewSubmission" Type="Self.ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReviewCreation">
+              <PropertyRef Name="ReviewID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewSub__Revie__5AEE82B9">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ReviewSubmission" Type="Self.ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="EmployeeToBeReviewed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Organ__Super__5DCAEF64">
+          <End Role="SuperUser" Type="Self.SuperUser" Multiplicity="0..1" />
+          <End Role="tbl_Organisation" Type="Self.tbl_Organisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuperUser">
+              <PropertyRef Name="SuperID" />
+            </Principal>
+            <Dependent Role="tbl_Organisation">
+              <PropertyRef Name="SuperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BegginerLevelTaskModelStoreContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewAssignment" EntityType="Self.ReviewAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewCreation" EntityType="Self.ReviewCreation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewSubmission" EntityType="Self.ReviewSubmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuperUser" EntityType="Self.SuperUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Organisation" EntityType="Self.tbl_Organisation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__UserID__4AB81AF0" Association="Self.FK__Employee__UserID__4AB81AF0">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__Emplo__4F7CD00D" Association="Self.FK__ReviewAss__Emplo__4F7CD00D">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__Revie__4E88ABD4" Association="Self.FK__ReviewAss__Revie__4E88ABD4">
+            <End Role="ReviewCreation" EntitySet="ReviewCreation" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__Revie__5070F446" Association="Self.FK__ReviewAss__Revie__5070F446">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__UserI__5165187F" Association="Self.FK__ReviewAss__UserI__5165187F">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewCre__UserI__4BAC3F29" Association="Self.FK__ReviewCre__UserI__4BAC3F29">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="ReviewCreation" EntitySet="ReviewCreation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewSub__Emplo__5535A963" Association="Self.FK__ReviewSub__Emplo__5535A963">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewSub__Revie__5441852A" Association="Self.FK__ReviewSub__Revie__5441852A">
+            <End Role="ReviewCreation" EntitySet="ReviewCreation" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewSub__Revie__5AEE82B9" Association="Self.FK__ReviewSub__Revie__5AEE82B9">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Organ__Super__5DCAEF64" Association="Self.FK__tbl_Organ__Super__5DCAEF64">
+            <End Role="SuperUser" EntitySet="SuperUser" />
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BegginerLevelTaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Organisation">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="BegginerLevelTaskModel.FK__Employee__UserID__4AB81AF0" FromRole="tbl_Organisation" ToRole="Employee" />
+          <NavigationProperty Name="ReviewCreations" Relationship="BegginerLevelTaskModel.FK__ReviewCre__UserI__4BAC3F29" FromRole="tbl_Organisation" ToRole="ReviewCreation" />
+          <NavigationProperty Name="ReviewAssignments" Relationship="BegginerLevelTaskModel.FK__ReviewAss__UserI__5165187F" FromRole="tbl_Organisation" ToRole="ReviewAssignment" />
+          <Property Name="SuperID" Type="Int64" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SuperUser" Relationship="BegginerLevelTaskModel.FK__tbl_Organ__Super__5DCAEF64" FromRole="tbl_Organisation" ToRole="SuperUser" />
+        </EntityType>
+        <EntityContainer Name="BegginerLevelTaskEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Organisation" EntityType="Self.tbl_Organisation" />
+          <EntitySet Name="Cities" EntityType="BegginerLevelTaskModel.City" />
+          <EntitySet Name="Countries" EntityType="BegginerLevelTaskModel.Country" />
+          <EntitySet Name="States" EntityType="BegginerLevelTaskModel.State" />
+          <EntitySet Name="Employees" EntityType="BegginerLevelTaskModel.Employee" />
+          <EntitySet Name="ReviewCreations" EntityType="BegginerLevelTaskModel.ReviewCreation" />
+          <AssociationSet Name="FK__Employee__UserID__4AB81AF0" Association="BegginerLevelTaskModel.FK__Employee__UserID__4AB81AF0">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewCre__UserI__4BAC3F29" Association="BegginerLevelTaskModel.FK__ReviewCre__UserI__4BAC3F29">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="ReviewCreation" EntitySet="ReviewCreations" />
+          </AssociationSet>
+          <EntitySet Name="ReviewAssignments" EntityType="BegginerLevelTaskModel.ReviewAssignment" />
+          <AssociationSet Name="FK__ReviewAss__Emplo__4F7CD00D" Association="BegginerLevelTaskModel.FK__ReviewAss__Emplo__4F7CD00D">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__Revie__5070F446" Association="BegginerLevelTaskModel.FK__ReviewAss__Revie__5070F446">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__Revie__4E88ABD4" Association="BegginerLevelTaskModel.FK__ReviewAss__Revie__4E88ABD4">
+            <End Role="ReviewCreation" EntitySet="ReviewCreations" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewAss__UserI__5165187F" Association="BegginerLevelTaskModel.FK__ReviewAss__UserI__5165187F">
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+            <End Role="ReviewAssignment" EntitySet="ReviewAssignments" />
+          </AssociationSet>
+          <EntitySet Name="ReviewSubmissions" EntityType="BegginerLevelTaskModel.ReviewSubmission" />
+          <AssociationSet Name="FK__ReviewSub__Emplo__5535A963" Association="BegginerLevelTaskModel.FK__ReviewSub__Emplo__5535A963">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewSub__Revie__5441852A" Association="BegginerLevelTaskModel.FK__ReviewSub__Revie__5441852A">
+            <End Role="ReviewCreation" EntitySet="ReviewCreations" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReviewSub__Revie__5AEE82B91" Association="BegginerLevelTaskModel.FK__ReviewSub__Revie__5AEE82B91">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ReviewSubmission" EntitySet="ReviewSubmissions" />
+          </AssociationSet>
+          <EntitySet Name="SuperUsers" EntityType="BegginerLevelTaskModel.SuperUser" />
+          <AssociationSet Name="FK__tbl_Organ__Super__5DCAEF64" Association="BegginerLevelTaskModel.FK__tbl_Organ__Super__5DCAEF64">
+            <End Role="SuperUser" EntitySet="SuperUsers" />
+            <End Role="tbl_Organisation" EntitySet="tbl_Organisation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DesignationEmp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DOJ" Type="DateTime" Precision="0" />
+          <Property Name="DepartmentEmp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddressEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailEmp" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserNameEmp" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordEmp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumEmp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="tbl_Organisation" Relationship="BegginerLevelTaskModel.FK__Employee__UserID__4AB81AF0" FromRole="Employee" ToRole="tbl_Organisation" />
+          <NavigationProperty Name="ReviewAssignments" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Emplo__4F7CD00D" FromRole="Employee" ToRole="ReviewAssignment" />
+          <NavigationProperty Name="ReviewAssignments1" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Revie__5070F446" FromRole="Employee" ToRole="ReviewAssignment" />
+          <NavigationProperty Name="ReviewSubmissions" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Emplo__5535A963" FromRole="Employee" ToRole="ReviewSubmission" />
+          <NavigationProperty Name="ReviewSubmissions11" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Revie__5AEE82B91" FromRole="Employee" ToRole="ReviewSubmission" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+        </EntityType>
+        <EntityType Name="ReviewCreation">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewAgenda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewCycleStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ReviewCycleEndDate" Type="DateTime" Precision="0" />
+          <Property Name="MinRate" Type="Int32" />
+          <Property Name="MaxRate" Type="Int32" />
+          <Property Name="ReviewDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="tbl_Organisation" Relationship="BegginerLevelTaskModel.FK__ReviewCre__UserI__4BAC3F29" FromRole="ReviewCreation" ToRole="tbl_Organisation" />
+          <NavigationProperty Name="ReviewAssignments" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Revie__4E88ABD4" FromRole="ReviewCreation" ToRole="ReviewAssignment" />
+          <NavigationProperty Name="ReviewSubmissions" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Revie__5441852A" FromRole="ReviewCreation" ToRole="ReviewSubmission" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ReviewStatus" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Employee__UserID__4AB81AF0">
+          <End Type="BegginerLevelTaskModel.tbl_Organisation" Role="tbl_Organisation" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewCre__UserI__4BAC3F29">
+          <End Type="BegginerLevelTaskModel.tbl_Organisation" Role="tbl_Organisation" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewCreation" Role="ReviewCreation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReviewCreation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReviewAssignment">
+          <Key>
+            <PropertyRef Name="ReviewAssignmentID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int64" />
+          <Property Name="EmployeeID" Type="Int64" />
+          <Property Name="Reviewer" Type="Int64" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ReviewAssignmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Emplo__4F7CD00D" FromRole="ReviewAssignment" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Revie__5070F446" FromRole="ReviewAssignment" ToRole="Employee" />
+          <NavigationProperty Name="ReviewCreation" Relationship="BegginerLevelTaskModel.FK__ReviewAss__Revie__4E88ABD4" FromRole="ReviewAssignment" ToRole="ReviewCreation" />
+          <NavigationProperty Name="tbl_Organisation" Relationship="BegginerLevelTaskModel.FK__ReviewAss__UserI__5165187F" FromRole="ReviewAssignment" ToRole="tbl_Organisation" />
+          <Property Name="AssignmentStatus" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+        </EntityType>
+        <Association Name="FK__ReviewAss__Emplo__4F7CD00D">
+          <End Type="BegginerLevelTaskModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewAssignment" Role="ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__Revie__5070F446">
+          <End Type="BegginerLevelTaskModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewAssignment" Role="ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="Reviewer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__Revie__4E88ABD4">
+          <End Type="BegginerLevelTaskModel.ReviewCreation" Role="ReviewCreation" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewAssignment" Role="ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReviewCreation">
+              <PropertyRef Name="ReviewID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewAss__UserI__5165187F">
+          <End Type="BegginerLevelTaskModel.tbl_Organisation" Role="tbl_Organisation" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewAssignment" Role="ReviewAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Organisation">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReviewAssignment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReviewSubmission">
+          <Key>
+            <PropertyRef Name="ReviewSubmissionID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int64" />
+          <Property Name="EmployeeID" Type="Int64" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="Feedback" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewSubmissionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Emplo__5535A963" FromRole="ReviewSubmission" ToRole="Employee" />
+          <NavigationProperty Name="ReviewCreation" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Revie__5441852A" FromRole="ReviewSubmission" ToRole="ReviewCreation" />
+          <Property Name="SubmissionStatus" Type="Boolean" />
+          <Property Name="EmployeeToBeReviewed" Type="Int64" />
+          <NavigationProperty Name="Employee11" Relationship="BegginerLevelTaskModel.FK__ReviewSub__Revie__5AEE82B91" FromRole="ReviewSubmission" ToRole="Employee" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__ReviewSub__Emplo__5535A963">
+          <End Type="BegginerLevelTaskModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewSubmission" Role="ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewSub__Revie__5441852A">
+          <End Type="BegginerLevelTaskModel.ReviewCreation" Role="ReviewCreation" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewSubmission" Role="ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReviewCreation">
+              <PropertyRef Name="ReviewID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="ReviewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReviewSub__Revie__5AEE82B91">
+          <End Type="BegginerLevelTaskModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.ReviewSubmission" Role="ReviewSubmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ReviewSubmission">
+              <PropertyRef Name="EmployeeToBeReviewed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SuperUser">
+          <Key>
+            <PropertyRef Name="SuperID" />
+          </Key>
+          <Property Name="SuperID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SuperFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SuperLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SuperUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SuperPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Organisation" Relationship="BegginerLevelTaskModel.FK__tbl_Organ__Super__5DCAEF64" FromRole="SuperUser" ToRole="tbl_Organisation" />
+        </EntityType>
+        <Association Name="FK__tbl_Organ__Super__5DCAEF64">
+          <End Type="BegginerLevelTaskModel.SuperUser" Role="SuperUser" Multiplicity="0..1" />
+          <End Type="BegginerLevelTaskModel.tbl_Organisation" Role="tbl_Organisation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuperUser">
+              <PropertyRef Name="SuperID" />
+            </Principal>
+            <Dependent Role="tbl_Organisation">
+              <PropertyRef Name="SuperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BegginerLevelTaskModelStoreContainer" CdmEntityContainer="BegginerLevelTaskEntities">
+          <EntitySetMapping Name="tbl_Organisation">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.tbl_Organisation">
+              <MappingFragment StoreEntitySet="tbl_Organisation">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="SuperID" ColumnName="SuperID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PhoneNumEmp" ColumnName="PhoneNumEmp" />
+                <ScalarProperty Name="PasswordEmp" ColumnName="PasswordEmp" />
+                <ScalarProperty Name="UserNameEmp" ColumnName="UserNameEmp" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EmailEmp" ColumnName="EmailEmp" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="AddressEmp" ColumnName="AddressEmp" />
+                <ScalarProperty Name="DepartmentEmp" ColumnName="DepartmentEmp" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="DesignationEmp" ColumnName="DesignationEmp" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewCreations">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.ReviewCreation">
+              <MappingFragment StoreEntitySet="ReviewCreation">
+                <ScalarProperty Name="ReviewStatus" ColumnName="ReviewStatus" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ReviewDescription" ColumnName="ReviewDescription" />
+                <ScalarProperty Name="MaxRate" ColumnName="MaxRate" />
+                <ScalarProperty Name="MinRate" ColumnName="MinRate" />
+                <ScalarProperty Name="ReviewCycleEndDate" ColumnName="ReviewCycleEndDate" />
+                <ScalarProperty Name="ReviewCycleStartDate" ColumnName="ReviewCycleStartDate" />
+                <ScalarProperty Name="ReviewAgenda" ColumnName="ReviewAgenda" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewAssignments">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.ReviewAssignment">
+              <MappingFragment StoreEntitySet="ReviewAssignment">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="AssignmentStatus" ColumnName="AssignmentStatus" />
+                <ScalarProperty Name="ReviewAssignmentID" ColumnName="ReviewAssignmentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Reviewer" ColumnName="Reviewer" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewSubmissions">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.ReviewSubmission">
+              <MappingFragment StoreEntitySet="ReviewSubmission">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EmployeeToBeReviewed" ColumnName="EmployeeToBeReviewed" />
+                <ScalarProperty Name="SubmissionStatus" ColumnName="SubmissionStatus" />
+                <ScalarProperty Name="ReviewSubmissionID" ColumnName="ReviewSubmissionID" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuperUsers">
+            <EntityTypeMapping TypeName="BegginerLevelTaskModel.SuperUser">
+              <MappingFragment StoreEntitySet="SuperUser">
+                <ScalarProperty Name="SuperPassword" ColumnName="SuperPassword" />
+                <ScalarProperty Name="SuperUserName" ColumnName="SuperUserName" />
+                <ScalarProperty Name="SuperLastName" ColumnName="SuperLastName" />
+                <ScalarProperty Name="SuperFirstName" ColumnName="SuperFirstName" />
+                <ScalarProperty Name="SuperID" ColumnName="SuperID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

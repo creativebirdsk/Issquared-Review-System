@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc75be3631954b78b183168e4ceec3cb" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.tbl_Organisation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.City" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.Country" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.State" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.Employee" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.ReviewCreation" PointX="3" PointY="6" Width="1.5" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__Employee__UserID__4AB81AF0" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewCre__UserI__4BAC3F29" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.ReviewAssignment" Width="1.5" PointX="8.625" PointY="3.875" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewAss__Emplo__4F7CD00D" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewAss__Revie__5070F446" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewAss__Revie__4E88ABD4" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewAss__UserI__5165187F" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.ReviewSubmission" Width="1.5" PointX="11.625" PointY="4.125" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewSub__Emplo__5535A963" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewSub__Revie__5441852A" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__ReviewSub__Revie__5AEE82B91" />
+        <EntityTypeShape EntityType="BegginerLevelTaskModel.SuperUser" Width="1.5" PointX="0.75" PointY="7.875" />
+        <AssociationConnector Association="BegginerLevelTaskModel.FK__tbl_Organ__Super__5DCAEF64" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,76 @@
+﻿@model BegginerLevelTask.Context.ReviewSubmission
+@{
+    ViewBag.Title = "ReviewSubmission";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+
+    .form-horizontal {
+        background-color: #fffdd0;
+        border: 2px solid darkblue;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        padding-bottom: 5px;
+    }
+
+    button {
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        padding-left: 445px;
+        text-align: left;
+    }
+</style>
+
+<h2 class="text-center text-uppercase"><strong><u>Submit Review</u></strong></h2>
+
+<hr class="line" />
+
+@using (Html.BeginForm("ReviewSubmission", "ReviewSubmission", "", FormMethod.Post))   //Razor Syntax
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="column">
+            <div class="text-center"><h4 style="color: black;"><strong><u>Agenda : @ViewBag.Agenda</u></strong></h4></div>
+            <br />
+            <div class="form-group">
+                <label class="control-label">Rating</label>
+                @Html.DropDownListFor(x => x.Rating, new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "1", Value = "1", Selected=false},
+                            new SelectListItem {Text = "2", Value = "2"},
+                            new SelectListItem {Text = "3", Value = "3"},
+                            new SelectListItem {Text = "4", Value = "4"},
+                            new SelectListItem {Text = "5", Value = "5"}
+                        }, "-- Select Rating --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Rating, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class="control-label">Feedback</label>
+                @Html.TextBoxFor(x => x.Feedback, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Feedback, "", new { @class = "error" })
+            </div>
+        </div>
+        <div class="form-group" id="buttons" style="margin-bottom:5px; padding-left:455px">
+            <div class="col-lg-10">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-primary">RESET</button>
+                <button onclick="SubmissionSuccessful()" type="submit" class="btn btn-primary">SUBMIT</button>
+                @*<a href="@Url.Action("ReviewCreationList","ReviewCreation", new { @class = "create" })" class="btn btn-primary">Dashboard</a>*@
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script>
+    function SubmissionSuccessful() {
+        alert("Review successfully submitted !");
+    }
+</script>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BegginerLevelTask.Context.ReviewAssignment>
+@{
+    ViewBag.Title = "ReviewAssignmentList";
+}
+
+<style>
+    .AChange {
+        text-align: center;
+    }
+</style>
+<style>
+    th {
+        color: white;
+        background: black;
+    }
+    td {
+        color: black;
+        background: white;
+    }
+</style>
+<br />
+<h2 class="text-center text-uppercase"><strong><u>Assigned List</u></strong></h2>
+<hr />
+<br />
+<a href="@Url.Action("ReviewCreationList","ReviewCreation", new { @class = "create" })" class="btn btn-primary">Assign Review</a>
+<br />
+<br />
+<div class="table-wrapper-scroll-x my-custom-scrollbar">
+    <table class="table table-bordered table-hover">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th style="text-align:center;">Review Agenda</th>
+                <th style="text-align:center;">Employee To be Reviewed</th>
+                <th style="text-align:center;">Reviewer</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;">
+                <td>@Html.DisplayFor(modelItem => item.ReviewCreation.ReviewAgenda)</td>
+                <td>@Html.DisplayFor(modelItem => item.Employee.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Employee1.FirstName)</td>
+            </tr>
+        }
+    </table>
+</div>

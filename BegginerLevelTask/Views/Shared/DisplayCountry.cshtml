@@ -1,0 +1,11 @@
+﻿@model BegginerLevelTask.Models.CascadingClass 
+
+<option value="">-- Select Country --</option>
+
+@if (ViewBag.CountryList != null)
+{
+    foreach(var item in ViewBag.CountryList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

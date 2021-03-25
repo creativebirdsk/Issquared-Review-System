@@ -1,0 +1,139 @@
+﻿@model BegginerLevelTask.Context.tbl_Organisation
+
+@{
+    ViewBag.Title = "Organisation";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+
+    .form-horizontal {
+        background-color: #fffdd0;
+        border: 2px solid darkblue;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        padding-bottom: 5px;
+    }
+
+    button {
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        padding-left: 160px;
+        text-align: left;
+    }
+
+    .field-validation-valid {
+        display: none;
+    }
+</style>
+
+<h2 class="text-center text-uppercase"><strong><u>Organisation</u></strong></h2>
+<hr class="line" />
+
+@using (Html.BeginForm("AddOrganisation", "Organisation", "", FormMethod.Post))   //Razor Syntax
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="container1" style="float:left; margin:15px; width:500px">
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                @Html.HiddenFor(x => x.UserID)
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class=" control-label">Phone Number</label>
+                @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class=" control-label">Email</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                @Html.TextBoxFor(x => x.UserName, new { @id = "Username", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class=" control-label">Password</label>
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "error" })
+            </div>
+        </div>
+        <div class="container2" style="float:left; margin:15px;width:500px">
+            <div class="form-group">
+                <label class=" control-label">Country</label>
+                @Html.DropDownListFor(x => x.Country, new List<SelectListItem>
+                        {
+                            new SelectListItem {Text = "Australia", Value = "Australia", Selected=false},
+                            new SelectListItem {Text = "England", Value = "England"},
+                            new SelectListItem {Text = "India", Value = "India"},
+                            new SelectListItem {Text = "Russia", Value = "Russia"},
+                            new SelectListItem {Text = "United States", Value = "United States"}
+                        }, "-- Select Country --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Country, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class="control-label">State</label>
+                @Html.DropDownListFor(x => x.State, new List<SelectListItem>
+                          {
+                              new SelectListItem {Text = "Punjab", Value = "Punjab", Selected=false},
+                              new SelectListItem {Text = "Haryana", Value = "Haryana"},
+                              new SelectListItem {Text = "Jharkhand", Value = "Jharkhand"},
+                              new SelectListItem {Text = "Bihar", Value = "Bihar"},
+                              new SelectListItem {Text = "Arunachal Pradesh", Value = "Arunachal Pradesh"}
+                          }, "-- Select State --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.State, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class=" control-label">City</label>
+                @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.City, "", new { @class = "error" })
+            </div>
+            <div class="form-group">
+                <label class=" control-label">Status</label>
+                <div class="radio">
+                    <label>
+                        @Html.RadioButtonFor(x => x.MaritalStatus, "Active", new { @checked = true })
+                        Active
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        @Html.RadioButtonFor(x => x.MaritalStatus, "In Active")
+                        In-Active
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="textArea" class="control-label">Description</label>
+                @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group" id="buttons" style="margin-bottom:5px; text-align:center">
+            <div class="col-lg-10">
+                <button type="reset" class="btn btn-primary">RESET</button>
+                <button onclick="SubmissionSuccessful()" type="submit" class="btn btn-primary">SUBMIT</button>
+                <a href="@Url.Action("OrganisationList", "Organisation", new { @class = "create" })" class="btn btn-primary">Organisation List</a>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<script>
+    function SubmissionSuccessful() {
+        alert("Submission Successful !");
+    }</script>
+
+

@@ -1,0 +1,79 @@
+﻿@model List<BegginerLevelTask.Context.tbl_Organisation>
+@{
+    ViewBag.Title = "OrganisationList";
+}
+
+<style>
+    div.btn-primary {
+        right: 5px;
+    }
+</style>
+<style>
+    th {
+        color: white;
+        background: black;
+    }
+
+    td {
+        color: black;
+        background: white;
+    }
+</style>
+<br />
+<h2 class="text-center text-uppercase"><strong><u>Organisation List</u></strong></h2>
+<hr /><br />
+<div><a href="@Url.Action("Organisation", new { @class = "create" })" class="btn btn-primary">Add Organisation</a></div>
+<br />
+<table class=" table table-hover table-bordered">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th style="text-align:center;">Name</th>
+            <th style="text-align:center;">Phone Number</th>
+            <th style="text-align:center;">Email</th>
+            <th style="text-align:center;">User Name</th>
+            <th style="text-align:center;">Country</th>
+            <th style="text-align:center;">State</th>
+            <th style="text-align:center;">City</th>
+            <th style="text-align:center;">Status</th>        @*Status for the person currently active or not*@
+            <th style="text-align:center;">Description</th>
+            <th style="text-align:center;">Action</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center;">
+            <td>@item.Name</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Email</td>
+            <td>@item.UserName</td>
+            <td>@item.Country</td>
+            <td>@item.State</td>
+            <td>@item.City</td>
+            <td>@item.MaritalStatus</td>
+            <td>@item.Description</td>
+            <td>
+                @*<a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="#"><i class="glyphicon glyphicon-trash"></i></a>*@
+                @Html.ActionLink("Edit", "EditOrganisation", new
+           {
+               item.UserID,
+               item.Name,
+               item.PhoneNumber,
+               item.Email,
+               item.UserName,
+               item.Password,
+               item.Country,
+               item.State,
+               item.City,
+               item.MaritalStatus,
+               item.Description
+           }, new { onclick = "return confirm('Are you sure you want to EDIT?');", @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserID },
+               new { onclick = "return confirm('Are you sure you want to DELETE?');", @class = "btn btn-danger" })
+                @* <a href="@Url.Action("Organisation", new {item.UserID})" class="btn btn-success">Edit</a>*@
+                @* <a href="@Url.Action("Delete", new {id=item.UserID})" class="btn btn-danger">Delete</a>*@
+            </td>
+        </tr>
+    }
+</table>
